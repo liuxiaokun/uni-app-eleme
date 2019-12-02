@@ -8,6 +8,7 @@
 						<view class="uni-media-list-text-top">{{item.name}}</view>
 						<view class="uni-media-list-text-bottom uni-ellipsis">{{item.createdDate}}</view>
 					</view>
+					<view class="state">{{item.currentStateName}}</view>
 				</view>
 			</view>
 			<load-more :loadText="loadText"></load-more>
@@ -52,6 +53,11 @@
 			this.loadText = "加载中..."
 			this.loadMore(this.pc.pageIndex + 1)
 		},
+		
+		onNavigationBarSearchInputConfirmed(text) {
+			console.log(text)
+			this.load(1)
+		},
 		methods: {
 			load(pageIndex) {
 				uni.request({
@@ -90,5 +96,7 @@
 </script>
 
 <style>
-
+.state {
+	color: #0A98D5;
+}
 </style>
