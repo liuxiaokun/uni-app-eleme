@@ -22,7 +22,8 @@
 
 	export default {
 		components: {
-			loadMore
+			loadMore,
+			uniLoadMore
 		},
 
 		data() {
@@ -60,6 +61,7 @@
 		},
 		methods: {
 			load(pageIndex) {
+				debugger
 				uni.request({
 					method: 'GET',
 					url: 'http://192.168.2.246:3333/function?s=' + this.pc.pageSize + '&p=' + pageIndex,
@@ -67,6 +69,10 @@
 					success: (res) => {
 						this.data = res.data.data;
 						this.pc = res.data.pc;
+					},
+					fail:() => {
+						debugger
+						console.log("fail")
 					}
 				})
 			},
