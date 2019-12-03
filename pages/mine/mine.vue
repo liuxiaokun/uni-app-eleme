@@ -61,18 +61,14 @@
 		},
 		methods: {
 			load(pageIndex) {
-				debugger
 				uni.request({
 					method: 'GET',
 					url: 'http://192.168.2.246:3333/function?s=' + this.pc.pageSize + '&p=' + pageIndex,
 					dataType: 'JSON',
 					success: (res) => {
-						this.data = res.data.data;
-						this.pc = res.data.pc;
-					},
-					fail:() => {
-						debugger
-						console.log("fail")
+						let dataObj = JSON.parse(res.data)
+						this.data = dataObj.data;
+						this.pc = dataObj.pc;
 					}
 				})
 			},
@@ -91,8 +87,9 @@
 					url: 'http://192.168.2.246:3333/function?s=' + this.pc.pageSize + '&p=' + pageIndex,
 					dataType: 'JSON',
 					success: (res) => {
-						this.data = this.data.concat(res.data.data);
-						this.pc = res.data.pc;
+						let dataObj = JSON.parse(res.data)
+						this.data = this.data.concat(dataObj.data);
+						this.pc = dataObj.pc;
 						uni.hideNavigationBarLoading();
 					}
 				})

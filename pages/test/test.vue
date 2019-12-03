@@ -68,7 +68,8 @@ export default {
 				url: 'http://192.168.2.246:3333/project',
 				dataType: 'JSON',
 				success: (res) => {
-					this.projectData = res.data.data;
+					let dataObj = JSON.parse(res.data)
+					this.projectData = dataObj.data;
 				}
 			})
 		},
@@ -80,8 +81,9 @@ export default {
 				url: 'http://192.168.2.246:3333/function?s=' + this.pc.pageSize + '&p=' + this.pc.pageIndex + '&projectId=' + id,
 				dataType: 'JSON',
 				success: (res) => {
-					this.functionData = res.data.data;
-					this.pc = res.data.pc;
+					let dataObj = JSON.parse(res.data)
+					this.functionData = dataObj.data;
+					this.pc = dataObj.pc;
 				}
 			})
 		}
