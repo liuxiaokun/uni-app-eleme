@@ -37,8 +37,8 @@ export default {
 	},
 	data() {
 		return {
-			visible: true,
-			direct: 'right',
+			visible: false,
+			direct: 'left',
 			pc:{
 				pageIndex:1,
 				pageSize:10
@@ -49,6 +49,11 @@ export default {
 	},
 	onLoad() {
 		this.load(1)
+	},
+	
+	onNavigationBarButtonTap() {
+		console.log("onNavigationBarButtonTap")
+		this.visible = !this.visible
 	},
 	methods: {
 		bindClick() {
